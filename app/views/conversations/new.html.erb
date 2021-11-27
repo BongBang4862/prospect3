@@ -1,0 +1,22 @@
+
+  <div class="row">
+    <div class="col">
+    <h4>Conversaciones</h4>
+      <% @prospect.conversations.each do |conversation| %>
+      <div class="notification">
+        <div class="notification-content">
+          <p><small><%= conversation.created_at %></small></p>
+          <p> <%= conversation.content %></p>
+        </div>
+      </div>
+  
+      <% end %>
+    </div>
+    <div class="col">
+     <h1>Agregar Conversation</h1><br>
+
+    <%= render 'form', prospect: @prospect %>
+
+    <%= link_to 'Regresar a la lista de Prospectos', prospects_path %>
+    </div>
+  </div>

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @prospect.email %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @prospect.name %>
+</p>
+<h3>Conversation</h3>
+<% @prospect.conversations.each do |conversation| %>
+  <%= conversation.content %><br>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_prospect_path(@prospect) %> |
+
+
+<%= link_to 'Back', prospects_path %>
+<%= link_to 'New Conversation', new_prospect_conversation_path(@prospect) %>

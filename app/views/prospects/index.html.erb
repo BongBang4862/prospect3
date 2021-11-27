@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+<h1>Prospectos</h1> <h3><%= link_to 'Nuevo Prospecto', new_prospect_path %></h3>
+<div class="row">
+  <div class="col">
+    <div class="card border-primary mb-3" style="max-width: 18rem;">
+      <div class="card-header">Prospectos</div>
+      <div class="card-body text-primary">
+        <h5 class="card-title text-center"><%= @prospects2 %></h5>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card border-primary mb-3" style="max-width: 18rem;">
+  <div class="card-header">Interesados</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title text-center"><%= @interested %></h5>
+  </div>
+</div>
+  </div>
+  <div class="col">
+  <div class="card border-primary mb-3" style="max-width: 18rem;">
+  <div class="card-header">Clientes</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title text-center"><%= @customers %></h5>
+  </div>
+</div>
+  </div>
+</div>
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Email</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Ingresado por</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Conversation</th>
+      <th scope="col">Option</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @prospects.each do |prospect| %>
+      <tr>
+        <td><%= prospect.id %></td>
+        <td><%= prospect.email %></td>
+        <td><%= prospect.name %></td>
+        <td><%= prospect.telephone %></td>
+        <td><%= prospect.status %></td>
+        <td><%= current_user.email %></td>
+        <td><%= prospect.created_at.strftime("%d-%m-%Y %H:%M") %></td>
+        <td><%= prospect.conversations.count %></td>
+       
+        
+        
+          <td><%= link_to 'Mostrar', prospect %><br>
+     
+       
+          <%= link_to 'Editar', edit_prospect_path(prospect) %><br>
+        
+       
+          <%= link_to 'Eliminar', prospect, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
